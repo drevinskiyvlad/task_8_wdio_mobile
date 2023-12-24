@@ -11,6 +11,7 @@
   },
   "scripts": {
     "test": "wdio run ./wdio.conf.js",
+    "test:samsung": "wdio run ./test/configs/wdio.samsung.conf.js",
     "test:login": "wdio run ./wdio.conf.js --suite login",
     "test:drag": "wdio run ./wdio.conf.js --suite drag",
     "report": "npm run report:generate && npm run report:open",

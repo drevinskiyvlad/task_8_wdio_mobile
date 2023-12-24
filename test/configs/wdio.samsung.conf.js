@@ -8,16 +8,16 @@ export const config = {
 
     updateJob: false,
     specs: [
-        './test/specs/**.e2e.js'
+        '../specs/**.e2e.js'
     ],
     exclude: [],
 
     suites: {
         login: [
-            './test/specs/login.e2e.js',
+            '../specs/login.e2e.js',
         ],
         drag: [
-            './test/specs/drag.e2e.js',
+            '../specs/drag.e2e.js',
         ],
     },
 
@@ -25,8 +25,8 @@ export const config = {
         project: "Task 8: Mobile Automation on Browserstack + WebdriverIO",
         build: 'Webdriverio Android',
         name: 'task_8',
-        device: 'Google Pixel 3',
-        os_version: "9.0",
+        device: 'Samsung Galaxy S23 Ultra',
+        os_version: "13.0",
         app: process.env.BROWSERSTACK_APP_ID,
         'browserstack.debug': true
     }],
