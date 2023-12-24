@@ -12,11 +12,6 @@ class HomePage extends Page {
         return $(selector);
     }
 
-    get swipeLink() {
-        const selector = '//android.widget.Button[@content-desc="Swipe"]';
-        return $(selector);
-    }
-
     get dragLink() {
         const selector = '//android.widget.Button[@content-desc="Drag"]';
         return $(selector);
