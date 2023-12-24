@@ -1,0 +1,37 @@
+name: Test Cypress Real World App
+
+on:
+  push:
+    branches: [origin]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '14'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Tests
+        env:
+          BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
+          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+          BROWSERSTACK_APP_ID: ${{ secrets.BROWSERSTACK_APP_ID }}
+        run: npm run test
+
+      - name: Generate Report
+        run: npm run report:generate
+
+      - name: Deploy Results to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@4.1.4
+        with:
+          branch: gh-pages
+          folder: allure-report/
