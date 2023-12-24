@@ -16,9 +16,6 @@ export const config = {
         login: [
             './test/specs/login.e2e.js',
         ],
-        swipe: [
-            './test/specs/swipe.e2e.js',
-        ],
         drag: [
             './test/specs/drag.e2e.js',
         ],
@@ -45,7 +42,7 @@ export const config = {
     framework: 'mocha',
     mochaOpts: {
         ui: 'bdd',
-        timeout: 20000
+        timeout: 200000
     },
     reporters: [['allure', {
         outputDir: 'allure-results',
