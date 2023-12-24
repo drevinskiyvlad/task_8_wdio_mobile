@@ -1,27 +1,86 @@
-# Repo with test task for browserstack
+# Automated Mobile Tests with WDIO and BrowserStack
 
-## Task
-1.  Clone repo and install all dependencies.
-2.  Upload app Android-NativeDemoApp to browserstack using API ([Link](https://www.browserstack.com/docs/app-automate/api-reference/appium/apps#upload-an-app)) and add unique ID to the ```wdio.conf.js```.
-3.  Create test 5 test cases (locators can be found using [Appium Inspector](https://github.com/appium/appium-inspector/releases) that conected to the Browserstack account).
-4.  Create workflow with using secrets (for user and key in capabilities)([description of secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets)).
-5.  Create 2 config files (with different devices)
+## Summary of Repo
 
-## Tips
-1.  You can create multiple accounts in browserstack (demo trial - 100 minutes).
-2.  First of all find all necessary locators.
-3.  In the Appium Inspector at the header choose ```Select Cloud Providers -> Browserstack``` and into ```JSON Representation``` insert the next:
+This repository contains automated mobile tests created using WDIO (WebdriverIO) and BrowserStack. The tests cover various scenarios such as login, drag-and-drop, and are designed to be run on Android devices.
+
+## Requirements
+
+Make sure you have the following requirements installed before running the tests:
+
+- Node.js
+- NPM (Node Package Manager)
+
+## Steps to Install
+
+1. Clone this repository to your local machine.
+2. Navigate to the project directory.
+3. Run the following command to install dependencies:
+
+```bash
+npm install
 ```
-{
-  "appium:protocol": "https",
-  "appium:hostname": "hub.browserstack.com",
-  "appium:path": "/wd/hub",
-  "appium:maxInstances": 1,
-  "appium:app": "Your App ID is here",
-  "appium:os_version": "9.0",
-  "appium:deviceName": "Google Pixel 3",
-  "platformName": "Android",
-  "appium:autoAcceptAlerts": "true",
-  "appium:browserstack.appium_version": "1.22.0"
-}
+
+## Steps to Launch
+
+Before launching the tests, ensure you have a `.env` file in the project root with the following environment variables:
+
+```plaintext
+BROWSERSTACK_USERNAME=your_browserstack_username
+BROWSERSTACK_ACCESS_KEY=your_browserstack_access_key
+BROWSERSTACK_APP_ID=your_browserstack_app_id
 ```
+
+Now, you can execute the tests using the following scripts:
+
+- Run all tests:
+
+```bash
+npm run test
+```
+
+- Run tests specifically on Samsung device:
+
+```bash
+npm run test:samsung
+```
+
+- Run only login suite:
+
+```bash
+npm run test:login
+```
+
+- Run only drag-and-drop suite:
+
+```bash
+npm run test:drag
+```
+
+## Steps to Creating the Report
+
+To generate and view the test report, use the following commands:
+
+```bash
+npm run report
+```
+
+This command internally executes:
+
+```bash
+npm run report:generate && npm run report:open
+```
+
+- To generate the Allure report:
+
+```bash
+npm run report:generate
+```
+
+- To open the generated Allure report:
+
+```bash
+npm run report:open
+```
+
+The test report will provide insights into test results, including passed and failed scenarios.
