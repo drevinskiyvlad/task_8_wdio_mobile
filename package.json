@@ -12,6 +12,7 @@
   "scripts": {
     "test": "wdio run ./wdio.conf.js",
     "test:login": "wdio run ./wdio.conf.js --suite login",
+    "test:drag": "wdio run ./wdio.conf.js --suite drag",
     "report": "npm run report:generate && npm run report:open",
     "report:open": "allure open",
     "report:generate": "allure generate allure-results --clean"
