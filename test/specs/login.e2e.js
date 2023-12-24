@@ -2,6 +2,7 @@ import HomePage from "../pageobjects/home.page.js";
 import LoginPage from "../pageobjects/login.page.js";
 import RegistrationPage from "../pageobjects/registration.page.js";
 import Faker from "../helper/faker.js";
+import data from "../data/data.json";
 
 describe('Login', () => {
 
@@ -17,8 +18,8 @@ describe('Login', () => {
     });
 
     it('Registration with valid credentials', async () => {
-        const validEmail = Faker.generateValidEmail();
-        const validPassword = Faker.generateRandomString(8);
+        const validEmail = data.valid_email;
+        const validPassword = data.valid_password;
 
         await LoginPage.signUpButton.click();
         await RegistrationPage.verify();
@@ -42,8 +43,8 @@ describe('Login', () => {
     });
 
     it('Login with valid credentials', async () => {
-        const validEmail = Faker.generateValidEmail();
-        const validPassword = Faker.generateRandomString(8);
+        const validEmail = data.valid_email;
+        const validPassword = data.valid_password;
 
         await LoginPage.login(validEmail, validPassword);
         await expect(LoginPage.loginAlert).toHaveText(LoginPage.successfulLoginMessage);
